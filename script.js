@@ -1,25 +1,13 @@
 const countdownElement = document.getElementById('countdown');
 const countdownContainer = document.getElementById('countdown-container');
 const startBtn = document.getElementById('start-btn');
-const targetDate = new Date('May 15, 2026 00:00:00').getTime();
 
-const countdownInterval = setInterval(() => {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
-  if(distance < 0){
-    clearInterval(countdownInterval);
-    countdownElement.innerHTML = "Selamat Ulang Tahun!";
-    startBtn.classList.remove('hidden');
-  } else {
-    const days = Math.floor(distance / (1000*60*60*24));
-    const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-    const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-    const seconds = Math.floor((distance % (1000*60))/1000);
-    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }
-}, 1000);
+// --- Langsung tampilkan tombol lanjut untuk testing ---
+countdownContainer.classList.remove('hidden');
+countdownElement.innerHTML = "Selamat Ulang Tahun!";
+startBtn.classList.remove('hidden');
 
-// tombol lanjut klik
+// klik tombol lanjut
 startBtn.addEventListener('click', ()=>{
   countdownContainer.classList.add('hidden');
   document.getElementById('birthday-form').classList.remove('hidden');
