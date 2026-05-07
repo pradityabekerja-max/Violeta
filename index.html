@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kejutan Ulang Tahun</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="countdown-container">
+  <h2>Countdown Ulang Tahun</h2>
+  <div id="countdown">Loading...</div>
+</div>
+
+<form id="birthday-form" class="hidden">
+  <h3>Jawab pertanyaan berikut:</h3>
+
+  <div class="question" data-step="1">
+    <p>1. Kapan Kita Jadian</p>
+    <label><input type="radio" name="q1" value="8 Februari 2022"> A. 8 Februari 2022</label>
+    <label><input type="radio" name="q1" value="26 Februari 2022"> B. 26 Februari 2022</label>
+    <button type="button" class="next-btn">Lanjut</button>
+  </div>
+
+  <div class="question" data-step="2">
+    <p>2. Di Kota Mana Kita Bertemu</p>
+    <label><input type="radio" name="q2" value="Semarang"> A. Semarang</label>
+    <label><input type="radio" name="q2" value="Jogja"> B. Jogja</label>
+    <button type="button" class="next-btn">Lanjut</button>
+  </div>
+
+  <div class="question" data-step="3">
+    <p>3. Apa Perasaan Kamu Sekarang</p>
+    <label><input type="radio" name="q3" value="Biasa Aja"> A. Biasa Aja</label>
+    <label><input type="radio" name="q3" value="Senaaang"> B. Senaaang</label>
+    <button type="button" class="next-btn">Lanjut</button>
+  </div>
+
+  <div class="question" data-step="4">
+    <p>Daftar 15 momen favorit bersama:</p>
+    <textarea name="moments" placeholder="Tulis 15 momen favorit..." rows="6"></textarea>
+    <button type="button" class="next-btn">Lanjut</button>
+  </div>
+
+  <div class="question" data-step="5">
+    <p>5 permintaan dengan budget max 1 juta:</p>
+    <textarea name="requests" placeholder="Tulis permintaan..." rows="4"></textarea>
+    <button type="submit">Kirim Jawaban</button>
+  </div>
+
+  <div id="form-response"></div>
+</form>
+
+<div id="final-photo-container" class="hidden">
+  <img src="assets/final-photo.jpg" alt="Foto Akhir" id="final-photo">
+  <p id="final-text">My only wish is to always make you smile and hug you when you fall.</p>
+</div>
+
+<audio id="bg-music" autoplay loop>
+  <source src="assets/bg-music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
