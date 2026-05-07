@@ -1,78 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Kejutan ulang tahun interaktif: countdown, kuis, dan foto akhir."
+    />
+    <title>Kejutan Ulang Tahun</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kejutan ulang tahun interaktif: countdown, kuis, dan foto akhir.">
-  <title>Kejutan Ulang Tahun</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <body>
+    <main class="container center" role="main">
+      <h1>Selamat Ulang Tahun 🎉</h1>
 
-<body>
-  <main class="container center" role="main">
-    <h1>Selamat Ulang Tahun 🎉</h1>
+      <section id="countdown-container" data-target="2026-05-20T00:00:00">
+        <div class="meta">Hitung mundur sampai hari spesial</div>
+        <div id="countdown" class="countdown" aria-live="polite">Memuat...</div>
+        <div class="controls">
+          <button id="dev-start" class="btn secondary">
+            Tampilkan Kuis (dev)
+          </button>
+        </div>
+      </section>
 
-    <section id="countdown-container" data-target="2026-05-20T00:00:00">
-      <div class="meta">Hitung mundur sampai hari spesial</div>
-      <div id="countdown" class="countdown" aria-live="polite">Memuat...</div>
-      <div class="controls">
-        <button id="dev-start" class="btn secondary">Tampilkan Kuis (dev)</button>
-      </div>
-    </section>
+      <form id="birthday-form" class="hidden" aria-hidden="true">
+        <fieldset class="question" data-step="1">
+          <legend>1. Kapan Kita Jadian?</legend>
+          <label
+            ><input type="radio" name="q1" value="8 Februari 2022" /> 8 Februari
+            2022</label
+          >
+          <label
+            ><input type="radio" name="q1" value="26 Februari 2022" /> 26
+            Februari 2022</label
+          >
+        </fieldset>
 
-    <form id="birthday-form" class="hidden" aria-hidden="true">
-      
-      <fieldset class="question" data-step="1">
-        <legend>1. Kapan Kita Jadian?</legend>
-        <label><input type="radio" name="q1" value="8 Februari 2022"> 8 Februari 2022</label>
-        <label><input type="radio" name="q1" value="26 Februari 2022"> 26 Februari 2022</label>
-      </fieldset>
+        <fieldset class="question" data-step="2">
+          <legend>2. Di Kota Mana Kita Bertemu?</legend>
+          <label
+            ><input type="radio" name="q2" value="Semarang" /> Semarang</label
+          >
+          <label><input type="radio" name="q2" value="Jogja" /> Jogja</label>
+        </fieldset>
 
-      <fieldset class="question" data-step="2">
-        <legend>2. Di Kota Mana Kita Bertemu?</legend>
-        <label><input type="radio" name="q2" value="Semarang"> Semarang</label>
-        <label><input type="radio" name="q2" value="Jogja"> Jogja</label>
-      </fieldset>
+        <fieldset class="question" data-step="3">
+          <legend>3. Apa Perasaan Kamu Sekarang?</legend>
+          <label
+            ><input type="radio" name="q3" value="Biasa Aja" /> Biasa Aja</label
+          >
+          <label
+            ><input type="radio" name="q3" value="Senaaang" /> Senaaang</label
+          >
+        </fieldset>
 
-      <fieldset class="question" data-step="3">
-        <legend>3. Apa Perasaan Kamu Sekarang?</legend>
-        <label><input type="radio" name="q3" value="Biasa Aja"> Biasa Aja</label>
-        <label><input type="radio" name="q3" value="Senaaang"> Senaaang</label>
-      </fieldset>
+        <fieldset class="question" data-step="4">
+          <legend>4. Tulis 15 momen favorit bersama</legend>
+          <textarea
+            name="moments"
+            rows="5"
+            placeholder="Tulis momen..."
+          ></textarea>
+        </fieldset>
 
-      <fieldset class="question" data-step="4">
-        <legend>4. Tulis 15 momen favorit bersama</legend>
-        <textarea name="moments" rows="5" placeholder="Tulis momen..."></textarea>
-      </fieldset>
+        <fieldset class="question" data-step="5">
+          <legend>5. 5 permintaan (budget max 1 juta)</legend>
+          <textarea
+            name="requests"
+            rows="4"
+            placeholder="Tulis permintaan..."
+          ></textarea>
+        </fieldset>
 
-      <fieldset class="question" data-step="5">
-        <legend>5. 5 permintaan (budget max 1 juta)</legend>
-        <textarea name="requests" rows="4" placeholder="Tulis permintaan..."></textarea>
-      </fieldset>
+        <div class="controls">
+          <button type="button" id="prev-btn" class="btn secondary">
+            Sebelumnya
+          </button>
+          <button type="button" id="next-btn" class="btn">Lanjut</button>
+          <button type="submit" id="submit-btn" class="btn hidden">
+            Kirim Jawaban
+          </button>
+        </div>
 
-      <div class="controls">
-        <button type="button" id="prev-btn" class="btn secondary">Sebelumnya</button>
-        <button type="button" id="next-btn" class="btn">Lanjut</button>
-        <button type="submit" id="submit-btn" class="btn hidden">Kirim Jawaban</button>
-      </div>
+        <div id="form-response" class="meta"></div>
+      </form>
 
-      <div id="form-response" class="meta"></div>
-    </form>
+      <section id="final-photo-container" class="hidden center" tabindex="-1">
+        <img src="assets/final-photo.jpg" alt="Foto kejutan" id="final-photo" />
+        <p id="final-text">
+          My only wish is to always make you smile and hug you when you fall.
+        </p>
+      </section>
 
-    <section id="final-photo-container" class="hidden center" tabindex="-1">
-      <img src="assets/final-photo.jpg" alt="Foto kejutan" id="final-photo">
-      <p id="final-text">My only wish is to always make you smile and hug you when you fall.</p>
-    </section>
+      <audio id="bg-music" preload="auto" loop>
+        <source src="assets/bg-music.mp3" type="audio/mpeg" />
+        Browser Anda tidak mendukung elemen audio.
+      </audio>
+    </main>
 
-    <!-- <audio id="bg-music" preload="auto" loop>
-      <source src="assets/bg-music.mp3" type="audio/mpeg">
-      Browser Anda tidak mendukung elemen audio.
-    </audio> -->
-
-  </main>
-
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
